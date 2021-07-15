@@ -8,24 +8,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-@Entity(name = "tb_category")
-public class Category  implements Serializable{
+@Entity(name = "tb_product")
+public class Product implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	String id;
 	String name;
+	Double price;
 
-	public Category() {
+	public Product() {
 		super();
-
 	}
 
-	public Category(String id, String name) {
+	public Product(String id, String name, Double price) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.price = price;
 	}
 
 	public String getId() {
@@ -44,6 +45,14 @@ public class Category  implements Serializable{
 		this.name = name;
 	}
 
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -57,7 +66,7 @@ public class Category  implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
 
