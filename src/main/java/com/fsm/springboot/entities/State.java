@@ -1,6 +1,8 @@
 package com.fsm.springboot.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -16,6 +18,7 @@ public class State  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String nome;
+	private List<City> cities = new ArrayList<>();
 
 	public State() {
 	
@@ -31,9 +34,6 @@ public class State  implements Serializable{
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -41,6 +41,10 @@ public class State  implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public List<City> getCities() {
+		return cities;
 	}
 
 	@Override
@@ -59,5 +63,4 @@ public class State  implements Serializable{
 		State other = (State) obj;
 		return Objects.equals(id, other.id);
 	}
-
 }
