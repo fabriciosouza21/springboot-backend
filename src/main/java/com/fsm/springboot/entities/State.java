@@ -18,8 +18,7 @@ public class State  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String nome;
-	private List<City> cities = new ArrayList<>();
-
+	
 	public State() {
 	
 	}
@@ -43,9 +42,6 @@ public class State  implements Serializable{
 		this.nome = nome;
 	}
 	
-	public List<City> getCities() {
-		return cities;
-	}
 
 	@Override
 	public int hashCode() {
