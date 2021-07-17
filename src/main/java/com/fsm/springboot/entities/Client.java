@@ -29,7 +29,7 @@ public class Client implements Serializable{
 	
 	public Client() {}
 
-	public Client(String id, String name, String email, String cpfOuCnpj, Address address) {
+	public Client(String id, String name, String email, String cpfOuCnpj) {
 		super();
 		this.id = id;
 		this.name = name;
