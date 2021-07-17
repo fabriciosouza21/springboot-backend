@@ -12,8 +12,6 @@ public class Config implements CommandLineRunner{
 	@Autowired
 	StateRepository stateRepository;
 	
-	@Autowired
-	
 	@Override
 	public void run(String... args) throws Exception {
 		

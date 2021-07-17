@@ -26,7 +26,11 @@ public class Address {
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
 	private City city;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "client_id")
+	private Client client;
+	
 	public Address() {
 	}
 
@@ -109,6 +113,14 @@ public class Address {
 			return false;
 		Address other = (Address) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 	

@@ -1,14 +1,14 @@
 package com.fsm.springboot.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,9 +23,9 @@ public class Client implements Serializable{
 	private String name;
 	private String email;
 	private String cpfOuCnpj;
-	@ManyToOne
-	@JoinColumn(name = "id_address")
-	private Address address;
+	
+	@OneToMany(mappedBy = "client")
+	private List<Address> address;
 	
 	public Client() {}
 
@@ -35,7 +35,6 @@ public class Client implements Serializable{
 		this.name = name;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.address = address;
 	}
 
 	public String getId() {
@@ -70,13 +69,12 @@ public class Client implements Serializable{
 		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
-	public Address getAddress() {
+
+	public List<Address> getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+
 
 	@Override
 	public int hashCode() {
