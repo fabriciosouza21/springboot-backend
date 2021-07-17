@@ -6,9 +6,11 @@ import org.springframework.context.annotation.Configuration;
 
 import com.fsm.springboot.entities.Address;
 import com.fsm.springboot.entities.City;
+import com.fsm.springboot.entities.Client;
 import com.fsm.springboot.entities.State;
 import com.fsm.springboot.repositories.AddressRepository;
 import com.fsm.springboot.repositories.CityRepository;
+import com.fsm.springboot.repositories.ClientRepository;
 import com.fsm.springboot.repositories.StateRepository;
 
 @Configuration
@@ -22,6 +24,9 @@ public class Config implements CommandLineRunner{
 	@Autowired
 	AddressRepository addressRepository;
 	
+	@Autowired
+	ClientRepository clientRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -31,8 +36,15 @@ public class Config implements CommandLineRunner{
 		City manaus = new City(null, "manaus", para);
 		cityRepository.save(manaus);
 		
-		Address address = new Address(null, "anjos", "156", "alameda silva", "paraiso", "123456", manaus);
+		Client joao = new Client(null, "joao", "joao@gmai.com", "1234579615");
+		clientRepository.save(joao);
+		
+		Address address = new Address(null, "anjos", "156", "alameda silva", "paraiso", "123456", manaus,joao);
+		
+		
 		addressRepository.save(address);
+		
+		
 	}
 
 }
