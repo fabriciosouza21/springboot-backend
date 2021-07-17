@@ -19,15 +19,20 @@ public class Config implements CommandLineRunner{
 	@Autowired
 	CityRepository cityRepository;
 	
+	@Autowired
+	AddressRepository addressRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		State para = new State(null, "para");
+		State para = new State(null, "amazonas");
 		stateRepository.save(para);
 		
-		City belem = new City(null, "belem", para);
-		cityRepository.save(belem);
+		City manaus = new City(null, "manaus", para);
+		cityRepository.save(manaus);
 		
+		Address address = new Address(null, "anjos", "156", "alameda silva", "paraiso", "123456", manaus);
+		addressRepository.save(address);
 	}
 
 }
