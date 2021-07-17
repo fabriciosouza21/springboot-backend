@@ -35,7 +35,7 @@ public class Address {
 	}
 
 	public Address(String id, String street, String number, String complement, String neighborhood, String zipCode,
-			City city) {
+			City city,Client client) {
 		super();
 		this.id = id;
 		Street = street;
@@ -44,6 +44,7 @@ public class Address {
 		this.neighborhood = neighborhood;
 		this.zipCode = zipCode;
 		this.city = city;
+		this.client = client;
 	}
 
 	public String getId() {
