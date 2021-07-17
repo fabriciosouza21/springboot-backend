@@ -7,16 +7,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-
+@Entity
+@Table
 public class Client implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String name;
 	private String email;
 	private String cpfOuCnpj;
+	@ManyToOne
+	@JoinColumn(name = "id_address")
 	private Address address;
 	
 	public Client() {}
