@@ -3,10 +3,12 @@ package com.fsm.springboot.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.fsm.springboot.entities.Client;
 import com.fsm.springboot.repositories.ClientRepository;
+import com.fsm.springboot.services.exception.DatabaseException;
 import com.fsm.springboot.services.exception.ResourceNotFoundException;
 
 @Service
@@ -36,8 +38,8 @@ public class ClientServices {
 	public void deleteById(String id) {
 		try {
 			repository.deleteById(id);
-		} catch (RuntimeException e) {
-			e.printStackTrace();
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException("erro database "+e.getMessage());
 		} 
 		
 	}
