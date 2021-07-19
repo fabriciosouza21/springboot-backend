@@ -16,6 +16,10 @@ public class ClientServices {
 	
 	public List<Client> findAll(){
 		return repository.findAll();
-	}	
+	}
+	
+	public Client save(Client client) {
+		return repository.save(client);
+	}
 	
 }
