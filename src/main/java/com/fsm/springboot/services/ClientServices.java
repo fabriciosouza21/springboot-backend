@@ -31,6 +31,14 @@ public class ClientServices {
 		else {
 			throw new ResourceNotFoundException();
 		}
-		 
-	} 
+	}
+	
+	public void deleteById(String id) {
+		try {
+			repository.deleteById(id);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		} 
+		
+	}
 }
