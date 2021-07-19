@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fsm.springboot.entities.Client;
 import com.fsm.springboot.repositories.ClientRepository;
+import com.fsm.springboot.services.exception.ResourceNotFoundException;
 
 @Service
 public class ClientServices {
@@ -23,6 +24,13 @@ public class ClientServices {
 	}
 	
 	public Client findByEmail(String email) {
-		return repository.findByEmail(email);
+		Client client = repository.findByEmail(email);
+		if (client != null) {
+			return client;
+		}
+		else {
+			throw new ResourceNotFoundException();
+		}
+		 
 	} 
 }
