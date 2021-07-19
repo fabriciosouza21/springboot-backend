@@ -22,4 +22,7 @@ public class ClientServices {
 		return repository.save(client);
 	}
 	
+	public Client findByEmail(String email) {
+		return repository.findByEmail(email);
+	} 
 }
