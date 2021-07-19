@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Client implements Serializable{
@@ -24,6 +26,7 @@ public class Client implements Serializable{
 	private String email;
 	private String cpfOuCnpj;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Address> address;
 	
