@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.fsm.springboot.entities.Client;
@@ -40,7 +41,9 @@ public class ClientServices {
 			repository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException("erro database "+e.getMessage());
-		} 
+		}catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException();
+		}
 		
 	}
 }
