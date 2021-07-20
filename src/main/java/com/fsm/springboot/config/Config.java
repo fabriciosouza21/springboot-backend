@@ -12,6 +12,7 @@ import com.fsm.springboot.repositories.AddressRepository;
 import com.fsm.springboot.repositories.CityRepository;
 import com.fsm.springboot.repositories.ClientRepository;
 import com.fsm.springboot.repositories.StateRepository;
+import com.fsm.springboot.services.ClientServices;
 
 @Configuration
 public class Config implements CommandLineRunner{
@@ -27,6 +28,9 @@ public class Config implements CommandLineRunner{
 	@Autowired
 	ClientRepository clientRepository;
 	
+	@Autowired
+	ClientServices clientServices;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -41,6 +45,10 @@ public class Config implements CommandLineRunner{
 		
 		Address address = new Address(null, "anjos", "156", "alameda silva", "paraiso", "123456", manaus,joao);
 		
+		joao.setName("joao da fe");
+		joao.setEmail("joaofe134@gmail.com");
+		
+		clientServices.update(joao);
 		
 		addressRepository.save(address);
 		
