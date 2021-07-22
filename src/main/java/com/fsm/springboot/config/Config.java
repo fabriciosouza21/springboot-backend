@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import com.fsm.springboot.entities.Address;
 import com.fsm.springboot.entities.City;
 import com.fsm.springboot.entities.Client;
+import com.fsm.springboot.entities.PhoneNumber;
 import com.fsm.springboot.entities.State;
 import com.fsm.springboot.repositories.AddressRepository;
 import com.fsm.springboot.repositories.CityRepository;
 import com.fsm.springboot.repositories.ClientRepository;
+import com.fsm.springboot.repositories.PhoneNumberRepository;
 import com.fsm.springboot.repositories.StateRepository;
 import com.fsm.springboot.services.ClientServices;
 
@@ -31,6 +33,9 @@ public class Config implements CommandLineRunner{
 	@Autowired
 	ClientServices clientServices;
 	
+	@Autowired
+	PhoneNumberRepository phoneNumberRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -47,11 +52,12 @@ public class Config implements CommandLineRunner{
 		
 		joao.setName("joao da fe");
 		joao.setEmail("joaofe134@gmail.com");
-		
 		clientServices.update(joao);
-		
 		addressRepository.save(address);
 		
+		PhoneNumber number = new PhoneNumber(null, "9198324721", joao);
+		
+		phoneNumberRepository.save(number);
 		
 	}
 
