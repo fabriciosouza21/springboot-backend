@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,9 +20,10 @@ public class PhoneNumber  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	String id;
 	String number;
-	
+	@ManyToOne
+	@JoinColumn(name = "client_id")
+	Client owner;
 	public PhoneNumber() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public PhoneNumber(String id, String number) {
