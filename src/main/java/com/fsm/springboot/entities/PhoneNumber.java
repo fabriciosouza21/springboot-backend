@@ -26,12 +26,13 @@ public class PhoneNumber  implements Serializable{
 	public PhoneNumber() {
 	}
 
-	public PhoneNumber(String id, String number) {
+	public PhoneNumber(String id, String number, Client owner) {
 		super();
 		this.id = id;
 		this.number = number;
+		this.owner = owner;
 	}
-
+	
 	public String getId() {
 		return id;
 	}
@@ -46,6 +47,14 @@ public class PhoneNumber  implements Serializable{
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+	
+	public Client getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Client owner) {
+		this.owner = owner;
 	}
 
 	@Override
