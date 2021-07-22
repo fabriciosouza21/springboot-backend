@@ -6,4 +6,5 @@ import com.fsm.springboot.entities.City;
 
 public interface CityRepository extends JpaRepository<City, String>{
 
+	City findByName(String name);
 }
