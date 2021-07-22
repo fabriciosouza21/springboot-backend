@@ -33,6 +33,7 @@ public class Client implements Serializable{
 	@OneToMany(mappedBy = "client")
 	private List<Address> address;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "owner")
 	private Set<PhoneNumber> phones = new HashSet<>();
 	
