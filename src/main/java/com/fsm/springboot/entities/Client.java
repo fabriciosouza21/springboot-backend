@@ -1,13 +1,16 @@
 package com.fsm.springboot.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,6 +32,9 @@ public class Client implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Address> address;
+	
+	@ManyToMany(mappedBy = "owner")
+	private Set<PhoneNumber> phones = new HashSet<>();
 	
 	public Client() {}
 
@@ -77,8 +83,10 @@ public class Client implements Serializable{
 		return address;
 	}
 
-
-
+	public Set<PhoneNumber> getPhones() {
+		return phones;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -95,8 +103,5 @@ public class Client implements Serializable{
 		Client other = (Client) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
 
 }
